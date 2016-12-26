@@ -22,3 +22,30 @@ fetch(url)
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(error => console.log(error));
+
+// Third Example
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(() => resolve('SUCCESS'), 1000);
+});
+
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(() => resolve('ERROR'), 2000);
+});
+
+Promise.all([promise1, promise2])
+  .then(success => {
+    console.log(success);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+// Fourth Example
+
+Promise.race([promise1, promise2])
+  .then(success => {
+    console.log(success);
+  })
+  .catch(error => {
+    console.log(error);
+  });
